@@ -2,40 +2,45 @@ package com.example.tp;
 
 public class Main {
     public static void main(String[] args) {
-        // 1. Création des filières
-        Filiere info   = new Filiere("Informatique");
-        Filiere genie  = new Filiere("Génie Civil");
+        // Création d’auteurs
+        Auteur hugo   = new Auteur("Victor Hugo");
+        Auteur orwell = new Auteur("George Orwell");
 
-        // 2. Création des étudiants (noms marocains)
-        Etudiant e1 = new Etudiant("El Idrissi", "Mohamed");
-        Etudiant e2 = new Etudiant("Bentaleb", "Fatima");
-        Etudiant e3 = new Etudiant("Chouaib",   "Youssef");
-        Etudiant e4 = new Etudiant("Lahlou",    "Salma");
-        Etudiant e5 = new Etudiant("Roussafi",  "Hassan");
-        Etudiant e6 = new Etudiant("Amrani",    "Aïcha");
+        // Création de livres (liaison avec auteur automatique)
+        Livre m1    = new Livre("Les Misérables", hugo);
+        Livre ndp   = new Livre("Notre-Dame de Paris", hugo);
+        Livre l1984 = new Livre("1984", orwell);
 
-        // 3. Association étudiants ↔ filières
-        info.ajouterEtudiant(e1);
-        info.ajouterEtudiant(e2);
-        info.ajouterEtudiant(e3);
-        info.ajouterEtudiant(e4);
-        info.ajouterEtudiant(e5);
-        // force l’agrandissement du tableau
-        info.ajouterEtudiant(e6);
+        // Création de bibliothèques
+        Bibliotheque centrale = new Bibliotheque("Centrale");
+        Bibliotheque quartier = new Bibliotheque("Quartier");
 
-        genie.ajouterEtudiant(new Etudiant("Belkahia", "Khadija"));
-        genie.ajouterEtudiant(new Etudiant("Laaroussi","Walid"));
+        // Associations bibliothèque ↔ livres
+        centrale.ajouterLivre(m1);
+        centrale.ajouterLivre(l1984);
+        quartier.ajouterLivre(m1);
+        quartier.ajouterLivre(ndp);
 
-        // 4. Affichage
-        System.out.println(info);
-        info.afficherEtudiants();
-        System.out.println();
+        // Affichage auteurs et leurs livres
+        System.out.println(hugo);
+        hugo.getLivres().forEach(l ->
+            System.out.println("  • " + l)
+        );
 
-        System.out.println(genie);
-        genie.afficherEtudiants();
-        System.out.println();
+        System.out.println(orwell);
+        orwell.getLivres().forEach(l ->
+            System.out.println("  • " + l)
+        );
 
-        // 5. Détail d’un étudiant
-        System.out.println("Détail de e3 : " + e3);
+        // Affichage bibliothèques et leur collection
+        System.out.println(centrale);
+        centrale.getCollection().forEach(l ->
+            System.out.println("  – " + l.getTitre() + " (id=" + l.getId() + ")")
+        );
+
+        System.out.println(quartier);
+        quartier.getCollection().forEach(l ->
+            System.out.println("  – " + l.getTitre() + " (id=" + l.getId() + ")")
+        );
     }
 }
