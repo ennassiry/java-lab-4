@@ -1,42 +1,34 @@
-package m.ennassiry.lab44;
+package com.example.tp4;
 
-import  java.lang.Math;
 
 public class Point {
-	private double x;
-	private double y;
 
-	public Point(double x, double y) {
+    // Coordonnées du point dans le plan cartésien
+    private double x;
+    private double y;
 
-		this.x = x;
-		this.y = y;
-	}
+    // Constructeur : initialise les coordonnées du point
+    public Point(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
 
-	public Point translation(double a, double b) {
+    // Retourne un nouveau point après une translation (a, b)
+    public Point translation(double a, double b) {
+        return new Point(this.x + a, this.y + b);
+    }
 
-		Point tmp = new Point(0, 0);
-		tmp.x = this.x + a;
-		tmp.y = this.y + b;
-		return tmp;
+    // Méthode statique qui calcule la distance entre deux points
+    public static double distance(Point p1, Point p2) {
+        double dx = p2.x - p1.x;
+        double dy = p2.y - p1.y;
 
-	}
+        return Math.sqrt(Math.pow(dx, 2) + Math.pow(dy, 2));
+    }
 
-public static double distance(Point p1 , Point p2) {
-           double x = p2.x - p1.x;
-        		  x = x*x;
-          double y = p2.y - p1.y;
-                 y = y*y;
-           
-		   double res = Math.sqrt(x+y);
-		   return res;
-	
-}
-
-
-
-	@Override
-	public String toString() {
-		return "( " + this.x + " , " + this.y + " )";
-	}
-
+    // Définit la représentation textuelle d'un point
+    @Override
+    public String toString() {
+        return "( " + x + " , " + y + " )";
+    }
 }
