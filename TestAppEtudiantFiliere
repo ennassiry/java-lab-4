@@ -1,0 +1,62 @@
+package com.example.tp;
+
+public class TestAppEtudiantFiliere {
+
+
+    public static void main(String[] args) {
+
+        // 1. Création des filières
+        Filiere informatique = new Filiere("Informatique");
+        Filiere mathematiques = new Filiere("Mathématiques");
+        Filiere reseaux = new Filiere("Réseaux et Télécommunications");
+
+        // 2. Création des étudiants marocains
+        Etudiant e1 = new Etudiant("Alaoui", "Hamza");
+        Etudiant e2 = new Etudiant("Bennani", "Imane");
+        Etudiant e3 = new Etudiant("Tazi", "Omar");
+        Etudiant e4 = new Etudiant("El Fassi", "Salma");
+        Etudiant e5 = new Etudiant("Berrada", "Yassine");
+        Etudiant e6 = new Etudiant("Chakir", "Meryem");
+        Etudiant e7 = new Etudiant("Amrani", "Anas");
+        Etudiant e8 = new Etudiant("Lahlou", "Nour");
+
+        // 3. Association des étudiants aux filières
+
+        // Filière Informatique
+        informatique.ajouterEtudiant(e1);
+        informatique.ajouterEtudiant(e2);
+        informatique.ajouterEtudiant(e3);
+
+        // Filière Mathématiques
+        mathematiques.ajouterEtudiant(e4);
+        mathematiques.ajouterEtudiant(e5);
+
+        // Filière Réseaux et Télécommunications
+        reseaux.ajouterEtudiant(e6);
+        reseaux.ajouterEtudiant(e7);
+        reseaux.ajouterEtudiant(e8);
+
+        // 4. Affichage des informations des filières
+
+        System.out.println("===== FILIÈRE INFORMATIQUE =====");
+        System.out.println(informatique);
+        informatique.afficherEtudiants();
+
+        System.out.println();
+
+        System.out.println("===== FILIÈRE MATHÉMATIQUES =====");
+        System.out.println(mathematiques);
+        mathematiques.afficherEtudiants();
+
+        System.out.println();
+
+        System.out.println("===== FILIÈRE RÉSEAUX =====");
+        System.out.println(reseaux);
+        reseaux.afficherEtudiants();
+
+        // 5. Affichage des détails d'un étudiant
+        System.out.println();
+        System.out.println("===== DÉTAIL D'UN ÉTUDIANT =====");
+        System.out.println(e2);
+    }
+}
